@@ -16,7 +16,7 @@ export default function UpdateItems() {
     console.log(itemsList);
   });
 
-  const handleAdd = () => {
+  const indexOfItem = (newItem, itemsList) => {
     let index = null;
     for (let item in itemsList) {
       if (
@@ -27,6 +27,11 @@ export default function UpdateItems() {
         break;
       }
     }
+    return index;
+  };
+
+  const handleAdd = () => {
+    let index = indexOfItem(newItem, itemsList);
     if (index === null) {
       setId(id + 1);
       const newList = [
@@ -46,16 +51,7 @@ export default function UpdateItems() {
   };
 
   const handleRemove = () => {
-    let index = null;
-    for (let item in itemsList) {
-      if (
-        itemsList[item].name.trim().toLowerCase() ===
-        newItem.trim().toLowerCase()
-      ) {
-        index = item;
-        break;
-      }
-    }
+    let index = indexOfItem(newItem, itemsList);
     if (index !== null) {
       const newList = [
         ...itemsList.slice(0, index),
