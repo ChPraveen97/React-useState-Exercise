@@ -16,7 +16,7 @@ export default function UpdateItems() {
     console.log(itemsList);
   });
 
-  const indexOfItem = (newItem, itemsList) => {
+  const getIndexOfItem = (newItem, itemsList) => {
     let index = null;
     for (let item in itemsList) {
       if (
@@ -30,8 +30,8 @@ export default function UpdateItems() {
     return index;
   };
 
-  const handleAdd = () => {
-    let index = indexOfItem(newItem, itemsList);
+  const addItem = () => {
+    let index = getIndexOfItem(newItem, itemsList);
     if (index === null) {
       setId(id + 1);
       const newList = [
@@ -50,8 +50,8 @@ export default function UpdateItems() {
     setNewItem("");
   };
 
-  const handleRemove = () => {
-    let index = indexOfItem(newItem, itemsList);
+  const removeItem = () => {
+    let index = getIndexOfItem(newItem, itemsList);
     if (index !== null) {
       const newList = [
         ...itemsList.slice(0, index),
@@ -79,8 +79,8 @@ export default function UpdateItems() {
         value={newItem}
         onChange={(e) => setNewItem(e.target.value)}
       ></input>
-      <button onClick={handleAdd}>Add</button>
-      <button onClick={handleRemove}>Remove</button>
+      <button onClick={addItem}>Add</button>
+      <button onClick={removeItem}>Remove</button>
       <ListItems>{itemsList}</ListItems>
     </div>
   );
