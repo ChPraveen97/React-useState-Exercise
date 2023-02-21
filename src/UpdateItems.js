@@ -76,7 +76,7 @@ export default function UpdateItems() {
 
   return (
     <div className="App">
-      <h2>Grocery Items</h2>
+      <h2>Grocery List</h2>
       <p className="alert">{message === "" ? "" : message}</p>
       <input
         type="text"
