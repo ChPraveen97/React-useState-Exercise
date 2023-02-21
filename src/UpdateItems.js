@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ListItems from "./listItems";
+import ListItems from "./ListItems";
 
 export default function UpdateItems() {
   const list = [
